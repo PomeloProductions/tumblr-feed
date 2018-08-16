@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Pomelo Productions Tumblr Feed
-Plugin URI: http://thealpinepress.com/alpine-phototile-for-tumblr/
+Plugin URI: http://wordpress.org/plugins/tumblr-feed
 Description: The Pomelo Productions Tumblr Feed is capable of retrieving photos from a particular Tumblr user or custom Tumblr URL. The photos can be linked to the your Tumblr page, a specific URL, or to a Fancybox slideshow. Also, the Shortcode Generator makes it easy to insert the widget into posts without learning any of the code. This lightweight but powerful widget takes advantage of WordPress's built in JQuery scripts to create a sleek presentation that I hope you will like.
-Version: 1.0.0
+Version: 0.1.0
 Author: the Alpine Press
 Author URI: http://pomeloproductions.com/
 License: GNU General Public License v3.0
