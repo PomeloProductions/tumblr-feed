@@ -55,10 +55,10 @@ class PhotoTileForTumblrBotSecondary extends PhotoTileForTumblrPrimary{
  *  @ Since 1.2.2
  */  
   function filter_filename( $name ){
-    $name = preg_replace('[[:cntrl:]]', '', $name ); // remove ASCII's control characters
+    $name = preg_replace('/[[:cntrl:]]/', '', $name ); // remove ASCII's control characters
     $bad = array_merge(
       array_map('chr', range(0,31)),
-      array("<",">",":",'"',"/","\\","|","?","*"," ",",","\'",".")); 
+      array("<",">",":",'"',"/","\\","|","?","*"," ",",","\'","."));
     $return = str_replace($bad, "", $name); // Remove Windows filename prohibited characters
     return $return;
   }
