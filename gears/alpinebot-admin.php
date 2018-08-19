@@ -182,15 +182,6 @@ class PhotoTileForTumblrAdminSecondary extends PhotoTileForTumblrPrimary{
       <p><?php _e("On the 'Shortcode Generator' tab you will find an easy to use interface that will help you create shortcodes. These shortcodes make it simple to insert the PhotoTile plugin into posts and pages.");?></p>
       <p><?php _e("The 'Plugin Settings' tab provides additional back-end options.");?></p>
       <p><?php _e("Finally, I am a one man programming team and so if you notice any errors or places for improvement, please let me know."); ?></p>
-      <p><?php _e('If you liked this plugin, try out some of the other plugins by ') ?><a href="http://thealpinepress.com/category/plugins/" target="_blank">the Alpine Press</a><?php _e(' and please rate us at ') ?><a href="<?php echo $this->get_private('wplink');?>" target="_blank">WordPress.org</a>.</p>
-      <br>
-      <h3><?php _e('Try the other free plugins in the Alpine PhotoTile Series:');?></h3>
-      <?php 
-      if( $this->check_private('plugins') && is_array( $this->get_private('plugins') ) ){
-        foreach($this->get_private('plugins') as $each){
-          ?><a href="http://wordpress.org/extend/plugins/alpine-photo-tile-for-<?php echo $each;?>/" target="_blank"><img class="image-icon" src="<?php echo $this->get_private('url');?>/css/images/for-<?php echo $each;?>.png" style="width:100px;"></a><?php
-        }
-      }?>
     <?php
   }
 /**
@@ -269,7 +260,7 @@ class PhotoTileForTumblrAdminSecondary extends PhotoTileForTumblrPrimary{
       }
       ?>
       <div>
-        <h3>This tool allows you to create shortcodes for the Alpine PhotoTile plugin.</h3>
+        <h3>This tool allows you to create shortcodes for displaying tumblr feeds throughout the site.</h3>
         <p>A shortcode is a line of text that tells WordPress how to load a plugin inside the content of a page or post. Rather than explaining how to put together a shortcode, this tool will create the shortcode for you.</p>
       </div>
       <?php       
@@ -722,8 +713,7 @@ class PhotoTileForTumblrAdmin extends PhotoTileForTumblrAdminSecondary{
         
         echo '<div class="bottom" style="position:relative;width:100%;margin-top:20px;">';
           //$this->admin_donate_button();
-          echo '<div class="help-link"><p>'.__('Need Help? Visit ').'<a href="'.$this->get_private('info').'" target="_blank">the Alpine Press</a>'.__(' for more about this plugin.').'</p></div>'; 
-					echo '<div><b>**Please Note: This plugin is no longer being developed or maintained. If you are a WordPress developer, I encourage you to take this plugin and make it your own.**</b></div>';
+          echo '<div class="help-link"><p>'.__('Need Help? Visit ').'<a href="'.$this->get_private('info').'" target="_blank">the github repo</a>'.__(' for more about this plugin.').'</p></div>';
         echo '</div>';
       echo '</div>'; // Close Container
 

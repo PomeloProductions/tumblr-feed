@@ -17,11 +17,11 @@ class PhotoTileForTumblrPrimary {
   private $vers = '1-2-6';
   private $domain = 'APTFTbyTAP_domain';
   private $settings = 'alpine-photo-tile-for-tumblr-settings'; // All lowercase
-  private $name = 'Alpine PhotoTile for Tumblr';
-  private $info = 'http://thealpinepress.com/alpine-phototile-for-tumblr/';
-  private $wplink = 'http://wordpress.org/extend/plugins/alpine-photo-tile-for-tumblr/';
+  private $name = 'Photo Tile for Tumblr';
+  private $info = 'https://github.com/PomeloProductions/tumblr-feed/issues';
+  private $wplink = 'http://wordpress.org/extend/plugins/pomelo-productions-tumblr-feed/';
   private $donatelink = 'https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=eric%40thealpinepress%2ecom&lc=US&item_name=Alpine%20PhotoTile%20for%20Tumblr%20Donation&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted';
-  private $page = 'AlpineTile: Tumblr';
+  private $page = 'Tumblr Feed';
   private $src = 'tumblr';
   private $hook = 'APTFTbyTAP_hook';
   private $plugins = array('instagram','pinterest','flickr','picasa-and-google-plus','smugmug');
@@ -310,8 +310,6 @@ class PhotoTileForTumblrPrimary {
       return $this->url.'/js/'.$this->wjs.'.js?ver='.$this->ver;
     }elseif( 'fancybox' == $string ){
       return $this->url.'/js/fancybox/jquery.fancybox-1.3.4.pack.js?ver=1.3.4';
-    }elseif( 'prettyphoto' == $string ){
-      return $this->url.'/js/prettyPhoto/js/jquery.prettyPhoto.js?ver=3.1.6';
     }elseif( 'colorbox' == $string ){
       return $this->url.'/js/colorbox/jquery.colorbox-min.js?ver=1.4.33';	
     }elseif( 'alpine-fancybox' == $string ){
@@ -333,8 +331,6 @@ class PhotoTileForTumblrPrimary {
       return $this->url.'/css/'.$this->wcss.'.css?ver='.$this->ver;
     }elseif( 'fancybox' == $string ){
       return $this->url.'/js/fancybox/jquery.fancybox-1.3.4.css?ver=1.3.4';
-    }elseif( 'prettyphoto' == $string ){
-      return $this->url.'/js/prettyPhoto/css/prettyPhoto.css?ver=3.1.5';
     }elseif( 'colorbox' == $string ){
       return $this->url.'/js/colorbox/colorbox.css?ver=1.4.33';	
     }elseif( 'alpine-fancybox' == $string ){
@@ -1015,11 +1011,7 @@ class PhotoTileForTumblrPrimary {
           'colorbox' => array(
             'name' => 'colorbox',
             'title' => 'ColorBox'
-          ),
-          'prettyphoto' => array(
-            'name' => 'prettyphoto',
-            'title' => 'prettyPhoto'
-          )      
+          )
         ),
         'tab' => 'plugin-settings',
         'position' => 'top',

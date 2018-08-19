@@ -1,6 +1,6 @@
 === Tumblr Feed ===
 Contributors: theAlpinePress, Pomelo Productions
-Tags: photos, photostream, stylish, pictures, images, widget, sidebar, gallery, lightbox, fancybox, colorbox, prettybox
+Tags: photos, photostream, stylish, pictures, images, widget, sidebar, gallery, lightbox, fancybox, colorbox
 Requires at least: 2.8
 Tested up to: 4.9.8
 Stable tag: 0.1.0
@@ -19,7 +19,7 @@ Retrieve photos from a Tumblr user, custom Tumblr URL, or tag with the Alpine Ph
 
 * Display Tumblr images in a sidebar, post, or page
 * Multiple styles to allow for customization
-* Lighbox feature for interactive slideshow (Fancybox, prettyBox, or ColorBox)
+* Lighbox feature for interactive slideshow (Fancybox, or ColorBox)
 * Simple instructions
 * Widget & shortcode options
 * Feed caching/storage for improved page loading
@@ -73,114 +73,9 @@ I am a one-man development team and I distribute these plugins for free, so plea
 = 1.0.0 =
 * First Release
 
-= 1.0.1 =
-* Added caching functions
-
-= 1.0.2 =
-* Fixed AJAX menu plugin loading problem
-
-= 1.0.3 =
-* Rebuilt photo retrieval method using Tumblr API
-* Changed "per row" and "image number" options
-* Added int high and low to sanitization function
-* Repaired photo linking issue with rift and bookshelf styles
-* Added height option to gallery style
-* Renamed functions where needed
-* Added "wall" style
-
-= 1.0.3.1 =
-* Added function and class check before call
-
-= 1.1.1 =
-* Cache filter for .info and .cache (V2)
-* Load styles and scripts to widget.php only
-* Added options page and shortcode generator
-* Added highlight, highlight color option, cache option, and cache time
-* Made option callbacks plugin specific (not global names)
-* Edited style layouts
-* Fixed url generation for set links
-* Enqueue JS and CSS on pages containing widget or shortcode only
-
-= 1.2.0 =
-* Rebuilt plugin structure into OBJECT
-* Combined all Alpine Photo Tiles scripts and styles into identical files
-* Improved IE 7 compatibility
-* Added custom image link options
-* Added Fancybox jQuery option
-* Fixed galleryHeight bug
-* Implemented fetch with wp_remote_get()
-
-= 1.2.1 =
-* Rebuilt admin div structure
-* Fixed admin css issues
-
-= 1.2.2 =
-* Added aspect ratio options for gallery style
-* Added key generator function
-* Added get_image_url() functions
-* Object oriented id, options, results, and output storage
-* Object oriented display generation
-
-= 1.2.3 =
-* Added FancyboxForAlpine (Fancybox Safemode)
-* Added choice between Fancybox, prettyBox, and ColorBox
-* Added hidden options, including custom rel for lightbox
-* Fixed duplicate "curl" in Tumblr shortcode
- 
-= 1.2.3.1 =
-* Fixed cache retrieval
-
-= 1.2.4 =
-* Restructured plugin objects and reassinged functions
-* Object oriented message, hidden, etc.
-* Added option to disable right-clicking on images
-* Added updateGlobalOptions and removed individual option calls
-* Added donate button
-* Fixed lightbox param option
-
-= 1.2.5 =
-* Fixed Tumblr feed fetching to account for photosets
-* Add tag option
-* Changed default "Original" Tumblr image size from 500 to 1280px
-* Added fallback to dynamic style and script loading using jQuery
-* Various small fixes
-* Moved cache location
-* Updated ColorBox plugin
-* Set Object params to private and implemeted set, check, and get function
-* Implemeted do_alpine_method call
-* Created active options and results functions
-
-= 1.2.6 =
-* Fixed jQuery bug (Removed all <> tags from inline scripts)
-* Add stripslashes text sanitization
-* Changed lightbox parameters option from CSS to stripslashes sanitization
-* Add filter to remove "\n" and "\r" from Tumblr titles
-
-= 1.2.6.1  =
-* Check compatibility with WP 3.8
-* Small CSS changes (Padding and hover white background)
-* Replaced deprecated jQuery APIs  ( .load() and .browser )
-* Updated prettyPhoto and ColorBox
-
-= 1.2.6.2  =
-* Replaced deprecated jQuery APIs  ( .load() and .browser )
-* Updated prettyPhoto and colorbox
-* jQuery backwards compatibility ( .bind() function for jQuery v1.6.3 and less )
-
-= 1.2.6.3  =
-* Load files before APTFFbyTAP_widget_register()
-
-= 1.2.6.4  =
-* Pretty Photo Update
-
-= 1.2.6.5 =
-* Fixed Admin Tabs
-
-= 1.2.6.6 =
-* End of development notice
-
 = TODO =
-* Change to FancyBox 2
-* Add caption to display
-* Rebuild jQuery display
-* Check with Contact Form 7
+* Rebuild the entire plugin
+** Rebuild the displays to use templates
+** Remove jQuery dependency
+** Make displays dynamic
+** Add Test Coverage

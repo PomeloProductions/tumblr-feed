@@ -1104,7 +1104,7 @@ class PhotoTileForTumblrBot extends PhotoTileForTumblrBotTertiary{
               jQuery('head').append(link);
             }";
           if( $hasLight ){    
-          $check = ($lightbox=='fancybox'?'fancybox':($lightbox=='prettyphoto'?'prettyPhoto':($lightbox=='colorbox'?'colorbox':'fancyboxForAlpine')));    
+          $check = ($lightbox=='fancybox'?'fancybox':($lightbox=='colorbox'?'colorbox':'fancyboxForAlpine'));
           $return .="
             if( !jQuery().".$check." ){ // Load Lightbox
               jQuery.getScript('".$lightScript."', function(){
@@ -1280,7 +1280,7 @@ class PhotoTileForTumblrBot extends PhotoTileForTumblrBotTertiary{
  */
   function add_credit_link(){
     if( !$this->get_active_option('widget_disable_credit_link') ){
-      $this->add('<div id="'.$this->get_private('wid').'-by-link" class="AlpinePhotoTiles-by-link"><a href="http://thealpinepress.com/" style="COLOR:#C0C0C0;text-decoration:none;" title="Widget by The Alpine Press">TAP</a></div>');
+      $this->add('<div id="'.$this->get_private('wid').'-by-link"><a href="https://www.pomeloproductions.com/" style="COLOR:#C0C0C0;text-decoration:none;" title="Widget by Pomelo Productions">TAP</a></div>');
     }  
   }
   
@@ -1314,7 +1314,7 @@ class PhotoTileForTumblrBot extends PhotoTileForTumblrBotTertiary{
     $src = $this->get_private('src');
     $lightbox = $this->get_option('general_lightbox');
     $prevent = $this->get_option('general_lightbox_no_load');
-    $check = ($lightbox=='fancybox'?'fancybox':($lightbox=='prettyphoto'?'prettyPhoto':($lightbox=='colorbox'?'colorbox':'fancyboxForAlpine')));
+    $check = ($lightbox=='fancybox'?'fancybox':($lightbox=='colorbox'?'colorbox':'fancyboxForAlpine'));
     if( empty($prevent) && $this->check_active_option($src.'_image_link_option') && $this->get_active_option($src.'_image_link_option') == 'fancybox' ){
       $lightScript = $this->get_script( $lightbox );
       $lightStyle = $this->get_style( $lightbox );
@@ -1369,11 +1369,6 @@ class PhotoTileForTumblrBot extends PhotoTileForTumblrBotTertiary{
       $default = "titleShow: false, overlayOpacity: .8, overlayColor: '#000', titleShow: true, titlePosition: 'inside'";
       $lightbox_style = (!empty($lightbox_style)? $default.','.$lightbox_style : $default );
       return $setRel."if(jQuery().fancybox){jQuery( 'a[rel^=\'".$this->get_active_option('rel')."\']' ).fancybox( { ".$lightbox_style." } );}";  
-    }elseif( 'prettyphoto' == $lightbox ){
-      //theme: 'pp_default', /* light_rounded / dark_rounded / light_square / dark_square / facebook
-      $default = "theme:'facebook',social_tools:false, show_title:true";
-      $lightbox_style = (!empty($lightbox_style)? $default.','.$lightbox_style : $default );
-      return $setRel."if(jQuery().prettyPhoto){jQuery( 'a[rel^=\'".$this->get_active_option('rel')."\']' ).prettyPhoto({ ".$lightbox_style." });}";  
     }elseif( 'colorbox' == $lightbox ){
       $default = "maxHeight:'85%'";
       $lightbox_style = (!empty($lightbox_style)? $default.','.$lightbox_style : $default );
@@ -1400,8 +1395,6 @@ class PhotoTileForTumblrBot extends PhotoTileForTumblrBotTertiary{
       $rel = str_replace('{ltsq}','[',$rel);
     }elseif( 'fancybox' == $lightbox ){
       $rel = 'alpine-fancybox-'.$this->get_private('wid');
-    }elseif( 'prettyphoto' == $lightbox ){
-      $rel = 'alpine-prettyphoto['.$this->get_private('wid').']';
     }elseif( 'colorbox' == $lightbox ){
       $rel = 'alpine-colorbox['.$this->get_private('wid').']';
     }else{

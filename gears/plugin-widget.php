@@ -131,7 +131,6 @@ class Alpine_PhotoTile_for_Tumblr extends WP_Widget {
         <div><?php _e('Add the plugin to a page or post using the ') ?><a href="<?php echo 'options-general.php?page='.$bot->get_private('settings').'&tab=generator' ?>" target="_blank">Shortcode Generator</a>.</div> 
         <div><?php _e('Check the ') ?><a href="<?php echo 'options-general.php?page='.$bot->get_private('settings').'&tab=plugin-settings' ?>" target="_blank">Plugins Settings</a> <?php _e('page for additional options.') ?></div> 
         <div><?php _e('Need Help? Visit ') ?><a href="<?php echo $bot->get_private('info'); ?>" target="_blank">the Alpine Press</a> <?php _e('for more about this plugin.') ?></div>
-				<div><b>**Please Note: This plugin is no longer being developed or maintained. If you are a WordPress developer, I encourage you to take this plugin and make it your own.**</b></div>
       </div>
     </div><?php // Close container
     
