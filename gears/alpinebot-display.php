@@ -183,12 +183,6 @@ class PhotoTileForTumblrBotSecondary extends PhotoTileForTumblrPrimary{
               @unlink($dir.$file);
             }
           }
-          /*elseif(is_dir($dir.$file)) {
-            @chmod($dir.$file, 0777);
-            @chdir('.');
-            @destroy($dir.$file.'/');
-            @rmdir($dir.$file);
-          }*/
         }
       }
       @closedir($opendir);
@@ -198,7 +192,7 @@ class PhotoTileForTumblrBotSecondary extends PhotoTileForTumblrPrimary{
   function cleanCache() {
     $cleaning_info = $this->get_private('cacheDir') . '/cleaning.info'; //Cache info     
     if (file_exists($cleaning_info))  {  
-      $cache_time = file_get_contents ($cleaning_info) + (int)$this->cleaningInterval; //Last update time of the cache cleaning  
+      $cache_time = file_get_contents ($cleaning_info); //Last update time of the cache cleaning
       $time = time(); //Current Time  
       $expiry_time = (int)$time; //Expiry time for the cache  
       if ((int)$cache_time < (int)$expiry_time){ //Compare last updated and current time     
@@ -209,10 +203,6 @@ class PhotoTileForTumblrBotSecondary extends PhotoTileForTumblrPrimary{
           while(false !== ($file = readdir($opendir))) {                            
             if($file != "." && $file != "..") {
               if(is_dir($dir.$file)) {
-                //@chmod($dir.$file, 0777);
-                //@chdir('.');
-                //@destroy($dir.$file.'/');
-                //@rmdir($dir.$file);
               }
               elseif(file_exists($dir.$file)) {
                 $file_array = @explode('.',$file);
@@ -222,7 +212,7 @@ class PhotoTileForTumblrBotSecondary extends PhotoTileForTumblrPrimary{
                   $filename_cache = $dir . $file_key . '.cache'; //Cache filename  
                   $filename_info = $dir . $file_key . '.info'; //Cache info   
                   if (file_exists($filename_cache) && file_exists($filename_info)) {  
-                    $cache_time = file_get_contents ($filename_info) + (int)$this->cleaningInterval; //Last update time of the cache file  
+                    $cache_time = file_get_contents ($filename_info) ; //Last update time of the cache file
                     $expiry_time = (int)$time; //Expiry time for the cache  
                     if ((int)$cache_time < (int)$expiry_time) {//Compare last updated and current time  
                       @chmod($filename_cache, 0777);
@@ -231,16 +221,6 @@ class PhotoTileForTumblrBotSecondary extends PhotoTileForTumblrPrimary{
                       @unlink($filename_info);
                     }  
                   }
-                  /*elseif (file_exists($filename_cache) && file_exists($filename_info)) {  
-                    $cache_time = file_get_contents ($filename_info) + (int)$this->cleaningInterval; //Last update time of the cache file  
-                    $expiry_time = (int)$time; //Expiry time for the cache  
-                    if ((int)$cache_time < (int)$expiry_time) {//Compare last updated and current time  
-                      @chmod($filename_cache, 0777);
-                      @unlink($filename_cache);
-                      @chmod($filename_info, 0777);
-                      @unlink($filename_info);
-                    } 
-                  }*/
                 }
               }
             }
@@ -251,87 +231,10 @@ class PhotoTileForTumblrBotSecondary extends PhotoTileForTumblrPrimary{
       }
     }
   } 
-  
-  /*
-  function putCacheImage($image_url){
-    $time = time(); //Current Time  
-    if ( ! file_exists($this->cacheDir) ){  
-      @mkdir($this->cacheDir);  
-      $cleaning_info = $this->cacheDir . '/cleaning.info'; //Cache info 
-      @file_put_contents ($cleaning_info , $time); // save the time of last cache update  
-    }
-    
-    if ( file_exists($this->cacheDir) && is_dir($this->cacheDir) ){ 
-      //replace with your cache directory
-      $dir = $this->cacheDir.'/';
-      //get the name of the file
-      $exploded_image_url = explode("/",$image_url);
-      $image_filename = end($exploded_image_url);
-      $exploded_image_filename = explode(".",$image_filename);
-      $name = current($exploded_image_filename);
-      $extension = end($exploded_image_filename);
-      //make sure its an image
-      if($extension=="gif"||$extension=="jpg"||$extension=="png"){
-        //get the remote image
-        $image_to_fetch = @file_get_contents($image_url);
-        //save it
-        $filename_image = $dir . $image_filename;
-        $filename_info = $dir . $name . '.info'; //Cache info  
-      
-        $local_image_file = @fopen($filename_image, 'w+');
-        @chmod($dir.$image_filename,0755);
-        @fwrite($local_image_file, $image_to_fetch);
-        @fclose($local_image_file);
-        
-        @file_put_contents($filename_info , $time); // save the time of last cache update  
-      }
-    }
-  }
-  
-  function getImageCache($image_url)  {  
-    $dir = $this->cacheDir.'/';
-  
-    $exploded_image_url = explode("/",$image_url);
-    $image_filename = end($exploded_image_url);
-    $exploded_image_filename = explode(".",$image_filename);
-    $name = current($exploded_image_filename);  
-    $filename_image = $dir . $image_filename;
-    $filename_info = $dir . $name . '.info'; //Cache info  
-  
-    if (file_exists($filename_image) && file_exists($filename_info))  {  
-      $cache_time = @file_get_contents ($filename_info) + (int)$this->expiryInterval; //Last update time of the cache file  
-      $time = time(); //Current Time  
-
-      $expiry_time = (int)$time; //Expiry time for the cache  
-
-      if ((int)$cache_time >= (int)$expiry_time){ //Compare last updated and current time 
-        return $this->cacheUrl.'/'.$image_filename;   // Return image URL
-      }else{
-        $local_image_file = @fopen($filename_image, 'w+');
-        @chmod($dir.$image_filename,0755);
-        @fwrite($local_image_file, $image_to_fetch);
-        @fclose($local_image_file);
-        
-        @file_put_contents($filename_info , $time); // save the time of last cache update  
-      }
-    }elseif( $this->cacheAttempts < $this->cacheLimit ){
-      $this->putCacheImage($image_url);
-      $this->cacheAttempts++;
-    }
-    return null;  
-  }  
-  */
 }
 
 /** ##############################################################################################################################################
- *  ##############################################################################################################################################
- *  ##############################################################################################################################################
- *  ##############################################################################################################################################
- *  ##############################################################################################################################################
- *  ##############################################################################################################################################
- *  ##############################################################################################################################################
- *  ##############################################################################################################################################
- *   
+ *
  *    AlpineBot Tertiary
  * 
  *    Display functions
